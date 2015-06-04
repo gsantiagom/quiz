@@ -9,3 +9,8 @@ section > div			{ padding: 20px; }
 header, nav, section	{ background: #eee; text-align: center;}
 footer					{ background: #eee; text-align: center;}
 nav span				{ margin: 0px 10px 0px 0px;}
+
+img						{ margin-left: auto; max-width:200px; max-height:150px; width: auto; height: auto; }
+iframe					{ margin-right: auto; max-width:200px; max-height:150px; width: auto; height: auto; }
+
+
