@@ -6,13 +6,13 @@ module.exports = function(sequelize, DataTypes) {
     { pregunta: {
 	    type: DataTypes.STRING,
 	    validate: { notEmpty: {					msg: "-> Falta Pregunta"},
-			        not: {args: ["Pregunta"],	msg: "-> Sustituya la palabra 'Pregunta'"}
+			        not: {args: ["^Pregunta$"],	msg: "-> Sustituya la palabra 'Pregunta'"}
 			      }
       },
 	  respuesta: {
 	    type: DataTypes.STRING,
 	    validate: { notEmpty: {					msg: "-> Falta Respuesta"},
-			        not: {args: ["Respuesta"],	msg: "-> Sustituya la palabra 'Respuesta'"}
+			        not: {args: ["^Respuesta$"],msg: "-> Sustituya la palabra 'Respuesta'"}
 			      }
       }
     }
