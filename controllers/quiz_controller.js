@@ -14,7 +14,13 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(function(quizes) {
+	var where = {order: 'pregunta ASC'};	// Variable para pasar el filtro que pasaremos en findAll, inicializado a sin filtro pero con ordenación ascendente.
+	if (req.query.search) {	// Si existe el parámetro search, filtramos en la query por dicho parámetro.
+		var filtro = "%" + req.query.search.replace(/\s/g, "%") + "%";	// Filtro exigido en el enunciado, incluyendo espacios intermedios.
+		console.log(filtro);
+		where.where = ["pregunta like ?", filtro];
+	}
+	models.Quiz.findAll(where).then(function(quizes) {
 		res.render('quizes/index', { quizes: quizes});
 	}). catch(function(error) { next(error);})
 };
