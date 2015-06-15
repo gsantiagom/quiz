@@ -14,6 +14,9 @@ module.exports = function(sequelize, DataTypes) {
 	    validate: { notEmpty: {					msg: "-> Falta Respuesta"},
 			        not: {args: ["^Respuesta$"],msg: "-> Sustituya la palabra 'Respuesta'"}
 			      }
+      },
+	  tematica: {
+	    type: DataTypes.STRING
       }
     }
   );
