@@ -19,6 +19,8 @@ exports.show = function(req, res) {
 					}
 					if (pregPublicada) {
 						stats.pregConCom++;
+					} else {
+						stats.pregSinCom++;
 					}
 				} else {
 					stats.pregSinCom++;
