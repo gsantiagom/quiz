@@ -39,6 +39,28 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Auto-logout
+app.use(function(req, res, next) {
+
+  if (req.session.user) {
+	  console.log('Hay alguien logado');
+	  var now = (new Date()).getTime();
+	  if (!req.session.lastTime
+		  || (now - req.session.lastTime) < 120000) {
+		  // Último acceso hace menos de 2 minutos. Actualizamos
+		  console.log('Reciente. Now = ' + now + ', req.session.lastTime = ' + req.session.lastTime + ', diff = ' + (now - req.session.lastTime));
+		  req.session.lastTime = now;
+	  } else {
+		  console.log('Antiguo. Now = ' + now + ', req.session.lastTime = ' + req.session.lastTime + ', diff = ' + (now - req.session.lastTime));
+		  // Último acceso hace dos minutos o más
+		  delete req.session.user;
+		  delete req.session.lastTime;
+	  }
+  }
+
+  next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
