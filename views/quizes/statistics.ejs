@@ -1,0 +1,15 @@
+<p>
+- N&uacute;mero de preguntas: <%= stats.numPreg %> <br>
+- N&uacute;mero de comentarios totales: <%= stats.numCom %> <br>
+- N&uacute;mero medio de comentarios por pregunta: <%= stats.comPorPreg.toFixed(2) %> <br>
+- N&uacute;mero de preguntas sin comentarios: <%= stats.pregSinCom %> <br>
+- N&uacute;mero de preguntas con comentarios: <%= stats.pregConCom %>
+</p>
+<br>
+<p>
+* Las estad&iacute;sticas sobre comunicados se refieren a comunicados publicados.<br>
+<% if (stats.numComSinPub > 0) { %>
+Existen comentarios sin publicar: <%= stats.numComSinPub %> 
+<% } %>
+</p>
+
