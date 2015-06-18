@@ -8,14 +8,18 @@ exports.show = function(req, res) {
 		if (stats.numPreg > 0) {
 			for (i=0; i < quizes.length; i++) {
 				if (quizes[i].Comments.length > 0) {
+					var pregPublicada = false;
 					for (j=0; j < quizes[i].Comments.length; j++) {
 						if (quizes[i].Comments[j].publicado) {
+							pregPublicada = true;
 							stats.numCom ++;
 						} else {
 							stats.numComSinPub ++;
 						}
 					}
-					stats.pregConCom++;
+					if (pregPublicada) {
+						stats.pregConCom++;
+					}
 				} else {
 					stats.pregSinCom++;
 				}
